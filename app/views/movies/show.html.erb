@@ -1,0 +1,17 @@
+<p><%= @movie.title %></p>
+<p><%= @movie.creation_year %></p>
+<p><%= @movie.genre %></p>
+
+<% @movie.actors.each do |actor| %>
+  <p class="actor"><%= actor.name %></p>
+<% end %>
+
+<%= form_with url:"/movies/#{@movie.id}/movie_actors", method: :post, local: true do |form|%>
+   <%= form.label :name %>
+   <%= form.text_field :name %>
+   <%= form.label :age %>
+   <%= form.text_field :age %>
+   <%= form.label :Working? %>
+   <%= form.text_field :Working? %>
+   <%= form.submit 'Create Actor' %>
+<% end %>
